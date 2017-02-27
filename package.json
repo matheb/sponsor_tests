@@ -1,0 +1,22 @@
+{
+  "name": "sponsor_tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "vacation.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheb/sponsor_tests.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matheb/sponsor_tests/issues"
+  },
+  "homepage": "https://github.com/matheb/sponsor_tests#readme",
+  "devDependencies": {
+    "tape": "^4.6.3"
+  }
+}
