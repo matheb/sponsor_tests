@@ -33,9 +33,27 @@ var wrongInput2 = {
   'G' : 'F'
 }
 
+var changedList = {
+  'A' : 'C',
+  'B' : 'A',
+  'C' : 'B',
+  'D' :'E',
+  'E' : '',
+  'F' : null,
+  'G' : 'F'
+}
+
 test('perfect sequence', function (t) {
   var actual = perfectSequence(destinations);
   var expected = ['F', 'G', 'E', 'D', 'B', 'C', 'A'];
+
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
+test('perfect sequence if dependency is before of the key in the destination list', function (t) {
+  var actual = perfectSequence(changedList);
+  var expected = ['F', 'G', 'E', 'D', 'A', 'B', 'C' ];
 
   t.deepEqual(actual, expected);
   t.end();
