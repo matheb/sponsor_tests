@@ -14,10 +14,14 @@ function perfectSequence(destinations) {
   // A közvetlen függőségek kigyűjtése
   for (var destination in destinations) {
     if ( destinations.hasOwnProperty(destination)) {
-      console.log( destination + ' -> ' + destinations[destination]);
+      //console.log( destination + ' -> ' + destinations[destination]);
       if ( destinations[destination] != null) {
-        var line = [destination, destinations[destination]];
-        lines.push(line);
+        if ( destinations[destination].isArray || typeof destinations[destination] == "object") {
+          throw new Error(" Invalid dependency");
+        } else {
+          var line = [destination, destinations[destination]];
+          lines.push(line);
+        }
       } else {
         lines.push(destination);
       }
@@ -28,7 +32,7 @@ function perfectSequence(destinations) {
   lines.sort(function(a,b){
     return b.length - a.length; //ASC, For Descending order use: b - a
   });
-  console.log(lines)
+  //console.log(lines)
 
   //Az összefüggő útvonalak összekapcsolása
   for (var i = 0 ; i < lines.length-1; i++){
@@ -53,9 +57,8 @@ function perfectSequence(destinations) {
       }
     }
   }
-  console.log(lines3)
-  console.log(lines3.reverse())
-  return lines3.reverse;
+
+  return lines3.reverse();
 }
 
 
@@ -69,6 +72,6 @@ var destinations = {
   'G' : 'F'
 }
 
-perfectSequence(destinations);
+console.log(perfectSequence(destinations));
 
 module.exports = perfectSequence;

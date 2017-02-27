@@ -15,7 +15,7 @@ var destinations = {
 
 test('perfect sequence', function (t) {
   var actual = perfectSequence(destinations);
-  var expected = ['A', 'C', 'B', 'D', 'E', 'G', 'F'].reverse();
+  var expected = ['F', 'G', 'E', 'D', 'B', 'C', 'A'];
 
   t.equal(actual, expected);
   t.end();
