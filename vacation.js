@@ -24,12 +24,20 @@ function perfectSequence(destinations) {
     }
   }
 
+  // Sortolom a listát, hogy egymástól függő célpontoknak legyen prioritása
+  lines.sort(function(a,b){
+    return b.length - a.length; //ASC, For Descending order use: b - a
+  });
+  console.log(lines)
 
+  //Az összefüggő útvonalak összekapcsolása
   for (var i = 0 ; i < lines.length-1; i++){
     for ( var j = i + 1; j < lines.length; j++) {
       for ( var k = 0; k < lines[j].length; k++) {
         if ( lines[i].includes(lines[j][k])){
           lines[i] = lines[i].concat(lines[j]);
+
+          // Ha független állomás volt, stringgé concatenálja az elemeket egyébként
           lines[i] = Array.from(lines[i])
         }
       }
@@ -37,7 +45,7 @@ function perfectSequence(destinations) {
     lines2.push(lines[i]);
   }
 
-
+  // Egy teljes lehetséges sorrend, minden állomást egyszer érintve
   for (var i = 0 ; i < lines2.length; i++){
     for ( var k = 0; k < lines2[i].length; k++) {
       if ( !lines3.includes(lines[i][k]) && lines[i][k] != ',' ) {
