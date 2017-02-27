@@ -71,3 +71,8 @@ test('wrong format of no dependecy', function (t) {
   t.deepEqual(actual, expected);
   t.end();
 });
+
+test('checking dependency loop', function (t) {
+  t.throws(function(){chekLoop(wrongInput)});
+  t.end();
+});
