@@ -32,7 +32,7 @@ function perfectSequence(destinations) {
 
   // Sortolom a listát, hogy egymástól függő célpontoknak legyen prioritása
   lines.sort(function(a,b){
-    return b.length - a.length; 
+    return b.length - a.length;
   });
   //console.log(lines)
 
@@ -41,10 +41,14 @@ function perfectSequence(destinations) {
     for ( var j = i + 1; j < lines.length; j++) {
       for ( var k = 0; k < lines[j].length; k++) {
         if ( lines[i].includes(lines[j][k])){
-          lines[i] = lines[i].concat(lines[j]);
-
-          // Ha független állomás volt, stringgé concatenálja az elemeket egyébként
-          lines[i] = Array.from(lines[i])
+          if ( lines[i].indexOf(lines[j][k]) > k) {
+            lines[i] = lines[i].concat(lines[j]);
+            lines[i] = Array.from(lines[i])
+          } else {
+            lines[i] = lines[j].concat(lines[i])
+            // Ha független állomás volt, stringgé concatenálja az elemeket egyébként
+            lines[i] = Array.from(lines[i])
+          }
         }
       }
     }
@@ -66,8 +70,8 @@ function perfectSequence(destinations) {
 
 var destinations = {
   'A' : 'C',
-  'B' : 'D',
-  'C' : 'null',
+  'B' : 'A',
+  'C' : 'B',
   'D' :'E',
   'E' : '',
   'F' : null,
